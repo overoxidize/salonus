@@ -6,12 +6,20 @@
 use tauri::generate_context;
 use serde::{Serialize, Deserialize};
 use uuid::Uuid;
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
 enum State {
     Loaded,
     Loading
 }
 
-#[derive(Serialize, Deserialize, Clone)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
+enum LoadErr {
+    FileErr,
+    FormatErr
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
 
 struct AppState {
     loaded: State,
@@ -20,11 +28,11 @@ struct AppState {
     pub comments: Vec<Comment>
 }
 
-
+#[derive(Serialize, Deserialize, Clone, Debug)]
 struct User {}
-
+#[derive(Serialize, Deserialize, Clone, Debug)]
 struct Agora {}
-
+#[derive(Serialize, Deserialize, Clone, Debug)]
 struct Comment {
     user_id : Uuid, // v4
     convo_id: Uuid, // v7
